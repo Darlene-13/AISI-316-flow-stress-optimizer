@@ -1,24 +1,16 @@
-# AISI 304 Flow Stress Optimizer
+# AISI 316 Flow Stress Optimizer
 
-An end-to-end machine learning project that uses an Artificial Neural Network (ANN) to predict and optimize the flow stress of AISI 304 stainless steel under hot deformation conditions.
+An end-to-end machine learning project that uses an Artificial Neural Network (ANN) to predict and optimize the flow stress of AISI 316 stainless steel under hot deformation conditions.
 
 ## Overview
 
-During hot deformation, the flow stress of stainless steel is influenced by three key parameters — temperature, strain rate, and strain. Classical approaches model this relationship using Arrhenius-type equations. This project replaces that manual fitting process with a trained multilayer perceptron (MLP) that learns the relationship directly from experimental data.
-
-Once trained, the model is used as a differentiable surrogate to find the optimal input parameters that minimize flow stress — exposed via a clean REST API.
+During hot deformation, the flow stress of stainless steel is influenced by three key parameters: temperature, strain rate, and strain. Classical approaches model this relationship using Arrhenius-type equations. This project replaces that manual fitting process with a trained multilayer perceptron (MLP) that learns the relationship directly from experimental data.
 
 ## Key Features
 
 - Exploratory data analysis confirming physically consistent relationships across all input features
 - Cubic spline interpolation along temperature and strain rate axes to expand the experimental dataset
 - Five models trained and benchmarked: Linear Regression, SVR, Random Forest, XGBoost, and MLP
-- MLP achieving R²=0.9886 with the lowest worst-case error (MaxAE=0.0491) of all five models
-- Gradient-based optimization using the trained ANN as a surrogate model
-- Optimal process parameters identified: 1051.4°C, strain rate 1.2214 s⁻¹, strain 0.40
-- FastAPI backend with `/predict` and `/optimize` endpoints (in progress)
-- Auto-generated Swagger documentation
-
 ## Inputs & Output
 
 | Input | Description |
@@ -41,7 +33,7 @@ Once trained, the model is used as a differentiable surrogate to find the optima
 | Random Forest     | 0.9928 | 0.0159 | 0.0090 | 0.0167 | 0.0667 |
 | XGBoost           | 0.9944 | 0.0141 | 0.0094 | 0.0175 | 0.0679 |
 
-While XGBoost achieves the highest average performance, the MLP records the lowest worst-case prediction error across all five models — critical in engineering applications where a single bad prediction carries real consequences. The ANN is also the only model that supports gradient-based optimization due to its smooth, differentiable prediction surface.
+While XGBoost achieves the highest average performance, the MLP records the lowest worst-case prediction error across all five models which is critical in engineering applications where a single bad prediction carries real consequences. The ANN is also the only model that supports gradient-based optimization due to its smooth, differentiable prediction surface.
 
 ## Optimal Process Parameters
 
@@ -56,12 +48,11 @@ These represent the most energy-efficient hot working conditions for AISI 304 st
 
 ## Tech Stack
 
-- **Python** — core language
-- **TensorFlow / Keras** — ANN model
-- **Scikit-learn** — preprocessing & evaluation
-- **SciPy** — data interpolation & optimization
-- **FastAPI** — API layer (in progress)
-- **Pandas / NumPy** — data handling
+- **Python**: core language
+- **TensorFlow / Keras**: ANN model
+- **Scikit-learn**: preprocessing & evaluation
+- **SciPy**: data interpolation & optimization
+- **Pandas / NumPy**: data handling
 
 ## Project Structure
 
@@ -108,12 +99,11 @@ aisi304-flow-stress-optimizer/
 | Preprocessing          | Complete    |
 | Model Training         | Complete    |
 | Optimization           | Complete    |
-| FastAPI Endpoints      | In Progress |
-| Dockerization          | Pending     |
+
 
 ## Material
 
-AISI 304 Austenitic Stainless Steel
+AISI 316 Austenitic Stainless Steel
 
 ---
 
