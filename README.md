@@ -64,14 +64,13 @@ aisi304-flow-stress-optimizer/
  
 Five regression models were trained and evaluated on the flow stress
 dataset before any optimization was performed:
- 
-| Model              | R²     | RMSE   | MAE    | MAPE   | MaxAE  |
-|---------------------|--------|--------|--------|--------|--------|
-| Linear Regression    | 0.9128 | 0.0555 | 0.0437 | 0.0772 | 0.1721 |
-| SVR                  | 0.9872 | 0.0213 | 0.0159 | 0.0286 | 0.0691 |
-| MLP (ANN)            | 0.9886 | 0.0201 | 0.0160 | 0.0249 | 0.0491 |
-| Random Forest        | 0.9928 | 0.0159 | 0.0090 | 0.0167 | 0.0667 |
-| **XGBoost**          | **0.9944** | **0.0141** | 0.0094 | 0.0175 | 0.0679 |
+
+| Model | R² | RMSE | MAE | MAPE | MaxAE |
+|-------|------:|------:|------:|------:|------:|
+| XGBoost | 0.9935 | 0.0150 | 0.0109 | 0.0186 | 0.0475 |
+| SVR | 0.9923 | 0.0163 | 0.0119 | 0.0196 | 0.0487 |
+| Random Forest | 0.9901 | 0.0185 | 0.0132 | 0.0231 | 0.0626 |
+| Linear Regression | 0.9590 | 0.0377 | 0.0294 | 0.0482 | 0.1506 |
  
 XGBoost was the most accurate predictive model overall. However, model
 accuracy alone does not determine which model can be used for
@@ -114,15 +113,15 @@ dataset:
 | Strain           | 0.1           | 0.7           |
  
 ## Results
- 
-| Algorithm | Surrogate | Temperature (°C) | Strain Rate (s⁻¹) | Strain | σ/σmax | Time (s) |
-|---|---|---|---|---|---|---|
-| L-BFGS-B | ANN | 1051.4 | 1.2214 | 0.40 | 0.5333 | — |
-| Differential Evolution | XGBoost | 1039.2 | 0.1237 | 0.10 | **0.1755** | 1.30 |
-| Particle Swarm | XGBoost | 1031.7 | 0.4391 | 0.11 | **0.1755** | 4.71 |
-| Simulated Annealing | XGBoost | 1000.3 | 0.2113 | 0.11 | **0.1755** | 1.34 |
-| Bayesian Optimization | XGBoost | 1006.9 | 0.4818 | 0.12 | **0.1755** | 23.59 |
- 
+
+| Algorithm                 | Surrogate | Temperature (°C) | Strain Rate (s⁻¹) | Strain | σ/σmax | Time (s) |
+|---------------------------|-----------|-----------------:|------------------:|--------:|-------:|---------:|
+| Differential Evolution    | XGBoost   | 1032.5           | 0.1928            | 0.106   | 0.2921 | 2.19     |
+| Particle Swarm            | XGBoost   | 1007.7           | 0.5754            | 0.111   | 0.2921 | 16.07    |
+| Simulated Annealing       | XGBoost   | 1021.3           | 0.9961            | 0.105   | 0.2921 | 1.89     |
+| Bayesian Optimization     | XGBoost   | 1024.3           | 0.2661            | 0.106   | 0.2921 | 31.98    |
+| L-BFGS-B                  | ANN       | 1051.4           | 1.2214            | 0.400   | 0.5102 | —        |
+```
 ## Key Findings
  
 **1. Cross-algorithm convergence validates the global minimum.**
